@@ -1,0 +1,42 @@
+<h1>DSCI Project DEMO</h1>
+
+{% load crispy_forms_tags %}
+{{ form|crispy }}
+{{ form3|crispy }}
+
+{% load staticfiles %}
+
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
+</head>
+<style>
+div.ex1 {
+  width:500px;
+  margin: auto;
+  border: 3px solid #73AD21;
+}
+
+div.ex2 {
+  max-width:200px;
+}
+</style>
+<body>
+<div class="ex2">
+  {{ form2.as_p}}
+</div>
+</body>
+</html>
+
+
+
+authors<br>
+{{author1}}
+<br>
+{{author2}}
+<br>
+{{author3}}
+<br>
+{{author4}}

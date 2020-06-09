@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for vehicle in vehicles_type %}
+  <option value="{{ vehicle.pk }}">{{ vehicle.name }}</option>
+{% endfor %}

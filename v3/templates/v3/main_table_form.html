@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h1><font color="yellow">Vehicle Information</font></h1>
+
+  <form method="post" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}" vehicle-url="{% url 'ajax_load_vehicle_type' %}"  novalidate>
+    {% csrf_token %}
+    <table bgcolor=white>
+      {{ form.as_table }}
+    <div id="content">
+    </div>
+        </table>
+        <div class="form-group">
+          <br>
+                  <button class="w3-button w3-yellow" type="submit">Submit</button>
+              </div>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">
+  <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
+  <script>
+    $("#id_brand_name_1").change(function () {
+      var url = $("#personForm").attr("data-cities-url");
+      var countryId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'country': countryId
+        },
+        success: function (data) {
+          $("#id_model_name").html(data);
+        }
+      });
+
+    });
+    $("#id_model_name").change(function () {
+      var url = $("#personForm").attr("vehicle-url");
+      var vid = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'vid': vid
+        },
+        success: function (data) {
+          $("#id_model_n").html(data);
+        }
+      });
+
+    });
+
+
+  </script>
+
+{% endblock %}
